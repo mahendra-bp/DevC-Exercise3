@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">rotation_period</th>
+                <th scope="col">diameter</th>
+                <th scope="col">climate</th>
+                <th scope="col">gravity</th>
+                <th scope="col">terrain</th>
+            </tr>
+        </thead>
+        <tbody id="id">
+
+        </tbody>
+    </table>
+    <script>
+        var api_swapi = 'https://swapi.co/api/planets/';
+        var table = document.getElementById('id');
+        fetch(api_swapi)
+            .then((resp) => resp
+                .json()
+            ) // Transform the data into json // Call the fetch function passing the url of the API as a parameter
+            .then(function (data) {
+                // Your code for handling the data you get from the API
+                var data_obj = data.results;
+                // console.log(data_obj.name);
+                for (i = 0; i < data_obj.length; i++) {
+                    j = i + 1;
+                    console.log(data_obj[i].name);
+                    var tr = document.createElement('tr');
+                    tr.innerHTML = '<td>' + j + '</td>' +
+                        '<td>' + data_obj[i].name + '</td>' +
+                        '<td>' + data_obj[i].rotation_periode + '</td>' +
+                        '<td>' + data_obj[i].diameter + '</td>' +
+                        '<td>' + data_obj[i].climate + '</td>' +
+                        '<td>' + data_obj[i].gravity + '</td>' +
+                        '<td>' + data_obj[i].terrain + '</td>';
+                    table.appendChild(tr);
+                }
+
+            })
+            .catch(function () {
+                // This is where you run code if the server returns any errors
+                console.log('error');
+            });
+    </script>
+</body>
+
+</html>
