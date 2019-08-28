@@ -11,22 +11,36 @@
 </head>
 
 <body>
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">rotation_period</th>
-                <th scope="col">diameter</th>
-                <th scope="col">climate</th>
-                <th scope="col">gravity</th>
-                <th scope="col">terrain</th>
-            </tr>
-        </thead>
-        <tbody id="id">
+    <div class="container">
+        <div class="row mb-4">
+            <form class="form-inline" style="width: 100%">
 
-        </tbody>
-    </table>
+                <div class="form-group mb-4">
+                    <input type="email" class="form-control" id="exampleInputEmail2"
+                        placeholder="cari berdasarkan nama">
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
+        </div>
+        <div class="row ">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">rotation_period</th>
+                        <th scope="col">diameter</th>
+                        <th scope="col">climate</th>
+                        <th scope="col">gravity</th>
+                        <th scope="col">terrain</th>
+                    </tr>
+                </thead>
+                <tbody id="id">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
     <script>
         var api_swapi = 'https://swapi.co/api/planets/';
         var table = document.getElementById('id');
@@ -40,11 +54,11 @@
                 // console.log(data_obj.name);
                 for (i = 0; i < data_obj.length; i++) {
                     j = i + 1;
-                    console.log(data_obj[i].name);
+                    //console.log(data_obj[i].name);
                     var tr = document.createElement('tr');
                     tr.innerHTML = '<td>' + j + '</td>' +
                         '<td>' + data_obj[i].name + '</td>' +
-                        '<td>' + data_obj[i].rotation_periode + '</td>' +
+                        '<td>' + data_obj[i].rotation_period + '</td>' +
                         '<td>' + data_obj[i].diameter + '</td>' +
                         '<td>' + data_obj[i].climate + '</td>' +
                         '<td>' + data_obj[i].gravity + '</td>' +
